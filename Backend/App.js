@@ -10,6 +10,7 @@ import { economicsRouter } from "./src/routes/economicsRoutes.js";
 import { marketPriceRouter } from "./src/routes/marketPriceRoutes.js";
 import { agriculturalResourceRouter } from "./src/routes/agriculturalResourceRoutes.js";
 import { adminDashboardRouter } from "./src/routes/adminDashboardRoutes.js";
+import { aiRouter } from "./src/routes/aiRoutes.js";
 
 
 
@@ -32,5 +33,6 @@ app.use("/api/economics", economicsRouter);
 app.use("/api/market-prices", marketPriceRouter);
 app.use("/api/resources", agriculturalResourceRouter);
 app.use("/api/admin/dashboard", adminDashboardRouter);
+app.use("/api/ai", aiRouter);
 
 export default app;

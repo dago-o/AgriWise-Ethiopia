@@ -5,6 +5,7 @@ import {fieldRouter} from './src/routes/fieldRoutes.js';
 import {cropRouter  } from './src/routes/cropRoutes.js';
 import { healthRouter } from "./src/routes/healthRoutes.js";
 import { riskRouter } from "./src/routes/riskRoutes.js";
+import {weatherRouter} from  './src/routes/weatherRoutes.js';
 
 
 
@@ -22,5 +23,6 @@ app.use('/api/field', fieldRouter);
 app.use('/api/crop', cropRouter);
 app.use('/api/crop-health', healthRouter);
 app.use('/api/crop-risk',riskRouter);
+app.use('/api/weather', weatherRouter);
 
 export default app;

@@ -6,6 +6,8 @@ import {cropRouter  } from './src/routes/cropRoutes.js';
 import { healthRouter } from "./src/routes/healthRoutes.js";
 import { riskRouter } from "./src/routes/riskRoutes.js";
 import {weatherRouter} from  './src/routes/weatherRoutes.js';
+import { economicsRouter } from "./src/routes/economicsRoutes.js";
+import { marketPriceRouter } from "./src/routes/marketPriceRoutes.js";
 
 
 
@@ -24,5 +26,7 @@ app.use('/api/crop', cropRouter);
 app.use('/api/crop-health', healthRouter);
 app.use('/api/crop-risk',riskRouter);
 app.use('/api/weather', weatherRouter);
+app.use("/api/economics", economicsRouter);
+app.use("/api/market-prices", marketPriceRouter);
 
 export default app;

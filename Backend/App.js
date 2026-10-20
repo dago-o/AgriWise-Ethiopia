@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { authRouter } from './src/routes/authRoutes.js';
 import {farmRouter} from './src/routes/farmRoutes.js';
 import {fieldRouter} from './src/routes/fieldRoutes.js';
@@ -15,6 +16,26 @@ import { aiRouter } from "./src/routes/aiRoutes.js";
 
 
 const app = express();
+
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  'http://localhost:5173',
+].filter(Boolean);
+
+// CORS must be registered before the API routes.
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Permit requests without an Origin header, such as Postman.
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      // Other browser origins will not receive CORS permission.
+      return callback(null, false);
+    },
+  })
+);
 
 app.use(express.json());
 

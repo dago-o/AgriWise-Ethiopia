@@ -21,13 +21,13 @@ marketPriceRouter.use(authenticateToken);
 // Farmers and administrators can view prices
 marketPriceRouter.get(
   "/",
-  authorizeRole(["farmer", "administrator"]),
+  authorizeRole(["farmer", "admin"]),
   getMarketPrices
 );
 
 marketPriceRouter.get(
   "/:id",
-  authorizeRole(["farmer", "administrator"]),
+  authorizeRole(["farmer", "admin"]),
   getMarketPriceById
 );
 
@@ -35,19 +35,19 @@ marketPriceRouter.get(
 // Only administrators can manage prices
 marketPriceRouter.post(
   "/",
-  authorizeRole(["administrator"]),
+  authorizeRole(["admin"]),
   createMarketPrice
 );
 
 marketPriceRouter.put(
   "/:id",
-  authorizeRole(["administrator"]),
+  authorizeRole(["admin"]),
   updateMarketPrice
 );
 
 marketPriceRouter.delete(
   "/:id",
-  authorizeRole(["administrator"]),
+  authorizeRole(["admin"]),
   deleteMarketPrice
 );
 

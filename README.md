@@ -1,1224 +1,441 @@
-# 🌱 AgriWise Ethiopia
+# 🌱 AgriWise-Ethiopia
 
-**AgriWise Ethiopia** is a web-based agricultural decision-support and farm management platform designed to help Ethiopian farmers manage their farming activities, monitor crop conditions, understand weather-related risks, track farm finances, and receive personalized AI-powered agricultural guidance.
+**AgriWise-Ethiopia** is a web-based agricultural decision-support and
+farm-management platform developed for the Ethiopian context. It brings
+farm and crop management, crop-health and risk records, weather
+information, agricultural market prices, learning resources, analytics,
+and AI-powered agricultural assistance into one application.
 
-The platform combines **farm management, crop monitoring, weather information, smart alerts, agricultural finance tracking, and a personalized AI assistant** in a single system.
+🟢 **[Live Demo](https://agriwise-ethiopia.pages.dev)**
 
-> 🚧 **Project Status:** In Development
-> 🎓 **Project Type:** INSA Graduation Project
-> 🌍 **Target Context:** Ethiopia
-> 🏗️ **Architecture:** MERN Stack — MongoDB, Express.js, React, Node.js
+> 🟢 **Project Status:** Deployed web application  
+> 🎓 **Project Type:** INSA Summer Talent Camp graduation project  
+> 👨‍💻 **Developer:** Degefa Lemma Gadisa  
+> 🆔 **Student ID:** CTC-623-26  
+> 🌍 **Target Context:** Ethiopia  
+> 🏗️ **Architecture:** React frontend + Node.js/Express REST API + MongoDB
 
----
+## Table of contents
 
-## 📌 Table of Contents
+-   [Overview](#overview)
+-   [Problem and objectives](#problem-and-objectives)
+-   [User roles](#user-roles)
+-   [Implemented features](#implemented-features)
+-   [Technology stack](#technology-stack)
+-   [System architecture](#system-architecture)
+-   [Repository structure](#repository-structure)
+-   [API modules](#api-modules)
+-   [Security](#security)
+-   [Deployment](#deployment)
+-   [Run locally](#run-locally)
+-   [Environment configuration](#environment-configuration)
+-   [Testing and verification](#testing-and-verification)
+-   [Future improvements](#future-improvements)
+-   [Developer](#developer)
+-   [License](#license)
 
-* [Overview](#-overview)
-* [Problem Statement](#-problem-statement)
-* [Project Objectives](#-project-objectives)
-* [Target Users](#-target-users)
-* [Core Features](#-core-features)
-* [System Workflow](#-system-workflow)
-* [AI Assistant](#-ai-assistant)
-* [Technology Stack](#-technology-stack)
-* [System Architecture](#-system-architecture)
-* [Project Structure](#-project-structure)
-* [Database Overview](#-database-overview)
-* [Authentication and Security](#-authentication-and-security)
-* [API Architecture](#-api-architecture)
-* [Frontend Structure](#-frontend-structure)
-* [Git and Branching Strategy](#-git-and-branching-strategy)
-* [Installation and Setup](#-installation-and-setup)
-* [Environment Variables](#-environment-variables)
-* [Development Workflow](#-development-workflow)
-* [Future Improvements](#-future-improvements)
-* [Project Goals](#-project-goals)
-* [License](#-license)
+## Overview
 
----
+Agriculture is central to the livelihoods of many people in Ethiopia.
+Farmers make decisions about crops, weather, crop conditions, and farm
+operations, but relevant information can be spread across different
+sources.
 
-# 🌾 Overview
+AgriWise-Ethiopia provides a centralized application where farmers can
+manage farm information and access agricultural information and digital
+decision support. Administrators can maintain selected platform content
+and information.
 
-Agriculture is an important part of Ethiopia's economy and the livelihood of a large portion of its population. However, farmers often need to make decisions about crops, weather, crop health, farm activities, and financial resources with limited access to timely digital information.
+AgriWise is intended to **support agricultural decision-making**, not
+replace qualified agricultural professionals. AI-generated guidance
+should be treated as preliminary information and checked with an
+agricultural expert when needed.
 
-**AgriWise Ethiopia** aims to provide a simple digital platform where farmers can record their farming activities and receive useful, personalized information based on their own farm data.
+## Problem and objectives
 
-Instead of building many disconnected systems, AgriWise brings the main information a farmer needs into one platform.
+The project aims to:
 
-The system is designed around five main areas:
+-   Provide digital farm, field, and crop management.
+-   Let farmers record crop-health observations and crop-risk
+    information.
+-   Present weather information and forecasts relevant to farm planning.
+-   Provide agricultural market-price information.
+-   Make agricultural learning resources available in one place.
+-   Present relevant summaries and analytics.
+-   Provide AI-assisted agricultural guidance using available context.
+-   Give administrators tools to manage selected content and platform
+    information.
 
-1. 🌱 Farm and Crop Management
-2. 🩺 Crop Health and Risk Support
-3. 🌦️ Weather and Smart Alerts
-4. 💰 Farm Economics and Market Information
-5. 🤖 Personalized AI Agricultural Assistant
+## User roles
 
-The system also provides an **Administrator interface** for managing users, agricultural resources, market information, and system-level information.
+### Farmer
 
----
+Depending on the feature, a farmer can manage farm-related records, view
+weather information, record crop-health information, view crop-risk
+information, access market prices and learning resources, and use the AI
+assistant.
 
-# ❗ Problem Statement
+### Admin
 
-Farmers may need to make decisions involving:
+The `admin` role is used for authorized administrative functions,
+including management of agricultural learning resources and market-price
+information and access to administrative analytics.
 
-* Which crops they are currently growing
-* What activities need to be performed
-* How weather conditions may affect their farms
-* Whether a crop is showing signs of a potential problem
-* How much money has been spent on farming
-* How much income has been generated
-* What agricultural information is relevant to their situation
+Registration and authorization rules are enforced by the backend.
+Administrative access should not be assumed to be available through
+public registration.
 
-These types of information are often separated across different sources.
+## Implemented features
 
-AgriWise Ethiopia addresses this problem by providing a centralized digital platform that connects:
+### Farm, field, and crop management
 
-```text
-Farmer Data
-     ↓
-Farm & Crop Information
-     ↓
-Weather Information
-     ↓
-Crop Health Information
-     ↓
-Financial Information
-     ↓
-Personalized Recommendations
+-   Manage farm records and associated fields and crops.
+-   Keep farm information organized for use by other application
+    features.
+
+### Crop health and crop risk
+
+-   Record crop-health information.
+-   Access crop-risk functionality for agricultural decision support.
+-   Treat digital guidance as preliminary rather than a professional
+    diagnosis.
+
+### Weather and forecasts
+
+-   Retrieve weather information associated with a farm.
+-   Access forecast information and weather-alert functionality where
+    supported by available data and service responses.
+-   Weather and location results depend on the external services and the
+    quality of the supplied location.
+
+### Economics and market prices
+
+-   Access agricultural economic information supported by the
+    application.
+-   View market/reference-price information.
+-   Authorized administrators can manage market-price records.
+
+### Agricultural learning resources
+
+-   Provide agricultural educational content, including supported
+    resource types such as articles, readings, and videos.
+-   Authorized administrators can create and manage resources; farmers
+    can access available resources.
+
+### Analytics and administration
+
+-   Provide dashboard analytics and reports for administrative or
+    agricultural-information monitoring.
+-   Available figures depend on the records stored in the application.
+
+### AI agricultural assistant
+
+-   Integrate Google's Gemini model for AI-powered agricultural
+    assistance.
+-   The backend can use relevant available agricultural context,
+    including weather context where supplied, to improve the usefulness
+    of responses.
+-   AI responses can be inaccurate or incomplete and should be treated
+    as decision support, not authoritative diagnosis.
+
+## Technology stack
+
+  -----------------------------------------------------------------------
+  Area                                Technologies
+  ----------------------------------- -----------------------------------
+  Frontend                            React, Vite, JavaScript, Tailwind
+                                      CSS
+
+  Frontend organization               Feature-oriented modules, shared
+                                      components, context, hooks, and
+                                      library utilities
+
+  Backend                             Node.js, Express.js
+
+  Database                            MongoDB with Mongoose
+
+  Authentication                      JSON Web Tokens (JWT), password
+                                      hashing, role-based authorization
+
+  API communication                   REST endpoints using JSON
+
+  AI integration                      Google Gemini API
+
+  External information                Weather and geocoding services, as
+                                      configured
+  -----------------------------------------------------------------------
+
+The table describes the technologies used by the project. Exact package
+versions are available in the respective `package.json` files.
+
+## System architecture
+
+AgriWise uses a separate frontend and backend. The frontend sends HTTP
+requests to the backend REST API. The backend validates requests,
+applies authentication and authorization where required, performs
+application logic, accesses MongoDB, and communicates with configured
+external services.
+
+``` text
+Farmer / Admin
+      |
+      v
+React + Vite frontend
+      |
+      | HTTP requests / JSON
+      v
+Node.js + Express REST API
+      |
+      +---------------------> MongoDB
+      |
+      +---------------------> Weather / geocoding services
+      |
+      +---------------------> Gemini API
 ```
 
-The goal is not to replace agricultural professionals. Instead, the platform provides **decision-support information** and can recommend that farmers seek assistance from nearby agricultural experts when physical professional support is appropriate.
+The frontend and backend can be deployed independently. Production URLs
+and secrets are configured through the hosting platforms and environment
+variables.
 
----
+## Repository structure
 
-# 🎯 Project Objectives
+The repository contains separate `Frontend` and `Backend` applications.
+The frontend source is organized into folders for application setup,
+reusable components, context, feature modules, hooks, shared libraries,
+and styles.
 
-The main objectives of AgriWise Ethiopia are to:
-
-* Provide farmers with a simple digital farm management system.
-* Allow farmers to manage their farms, fields, crops, and farming activities.
-* Provide weather information relevant to agricultural decision-making.
-* Generate useful alerts and reminders.
-* Help farmers record and understand crop health conditions.
-* Provide preliminary AI-powered agricultural guidance.
-* Track farming expenses and income.
-* Provide market/reference price information.
-* Provide personalized AI recommendations based on farmer and farm data.
-* Provide administrators with tools to manage relevant system information.
-* Demonstrate how modern web technologies and AI can support agricultural decision-making in Ethiopia.
-
----
-
-# 👥 Target Users
-
-AgriWise Ethiopia has **two main user roles**.
-
-## 👨‍🌾 1. Farmer
-
-The farmer is the primary user of the platform.
-
-Farmers can:
-
-* Create an account
-* Manage their farms
-* Manage fields and crops
-* Record farming activities
-* Record crop health information
-* View weather information
-* Receive alerts and reminders
-* Track farming expenses
-* Record farm income
-* View financial summaries
-* View market/reference prices
-* Interact with the AI agricultural assistant
-* Receive personalized recommendations
-
----
-
-## 👨‍💼 2. Administrator
-
-The administrator manages system-level information.
-
-Administrators can:
-
-* Manage registered users
-* Manage agricultural resources
-* Manage market/reference price information
-* Monitor system activity
-* Manage relevant alerts or information
-* Maintain platform content
-
-The system does **not** require agricultural experts to create accounts in the initial version.
-
-When a farmer needs professional physical assistance, the system can recommend contacting a nearby agricultural expert.
-
----
-
-# 🚀 Core Features
-
-AgriWise Ethiopia focuses on **five core feature groups**.
-
----
-
-## 1. 🌱 Farm & Crop Management
-
-Farmers can digitally manage their agricultural activities.
-
-### Main capabilities
-
-* Create and manage farms
-* Manage fields
-* Record crop information
-* Record planting dates
-* Record farming activities
-* Record inputs and activities
-* Record harvest information
-* Track crop progress
-
-Example:
-
-```text
-Farm
- ├── Field 1
- │    └── Maize
- │
- ├── Field 2
- │    └── Wheat
- │
- └── Field 3
-      └── Teff
-```
-
-This information becomes the foundation for other AgriWise features.
-
----
-
-# 2. 🩺 Crop Health & Risk Support
-
-Farmers can record potential crop health problems and receive preliminary digital guidance.
-
-A farmer may provide:
-
-* Crop
-* Symptoms
-* Observations
-* Optional crop image
-* Growth stage
-* Additional notes
-
-The system can then provide:
-
-* Possible explanations
-* General management suggestions
-* Preventive recommendations
-* Risk information
-* Guidance on when professional assistance may be appropriate
-
-The AI guidance is intended as **decision support**, not as a replacement for professional agricultural diagnosis.
-
-If the situation requires physical assistance, the system can recommend contacting a nearby agricultural expert.
-
----
-
-# 3. 🌦️ Weather & Smart Alerts
-
-Weather information is important for agricultural planning.
-
-AgriWise integrates weather information to help farmers understand current and upcoming conditions.
-
-### Weather information may include:
-
-* Current temperature
-* Weather condition
-* Humidity
-* Rain information
-* Wind information
-* Forecast information
-
-### Smart alerts may include:
-
-* 🌧️ Rain-related alerts
-* ☀️ Dry-condition alerts
-* 🌡️ Temperature-related alerts
-* 🌱 Crop-related reminders
-* 🚜 Farming activity reminders
-* ⚠️ Potential crop-risk notifications
-
-The goal is to transform raw weather information into useful information for the farmer.
-
----
-
-# 4. 💰 Farm Economics & Market Information
-
-Farmers can record the financial side of their agricultural activities.
-
-### Expense tracking
-
-Examples:
-
-* Seeds
-* Fertilizer
-* Pesticides
-* Labor
-* Transportation
-* Irrigation
-* Equipment
-* Other farming costs
-
-### Income tracking
-
-Farmers can record:
-
-* Harvest sales
-* Product quantity
-* Selling price
-* Total income
-
-The system can calculate:
-
-```text
-Total Income
-     -
-Total Expenses
-     =
-Estimated Profit
-```
-
-Farmers can view financial summaries and understand how their farming activities are performing economically.
-
-### Market information
-
-The administrator can manage reference market-price information that farmers can view through the platform.
-
----
-
-# 5. 🤖 Personalized AI Agricultural Assistant
-
-The AI assistant is one of the main intelligent features of AgriWise.
-
-Instead of providing completely generic answers, the AI can use relevant information from the farmer's profile and farm records to provide more personalized guidance.
-
-For example, the assistant may consider:
-
-```text
-Farmer
-   +
-Location
-   +
-Farm
-   +
-Crop
-   +
-Crop Growth Stage
-   +
-Weather
-   +
-Crop Health Records
-   +
-Financial Information
-   ↓
-Personalized Agricultural Guidance
-```
-
-### AI assistant capabilities
-
-The AI assistant can support several tasks, including:
-
-### 🌱 Agricultural Questions
-
-Farmers can ask general agricultural questions.
-
-Example:
-
-> "What should I consider when growing maize?"
-
----
-
-### 🩺 Crop Health Guidance
-
-The farmer can describe symptoms and ask for preliminary guidance.
-
-Example:
-
-> "The leaves of my maize are turning yellow. What could be the possible causes?"
-
----
-
-### 🌦️ Weather-Based Guidance
-
-The AI can use available weather information to provide contextual suggestions.
-
-Example:
-
-> "It is expected to rain tomorrow. Which farming activities should I consider?"
-
----
-
-### 📊 Farm Performance Analysis
-
-The AI can summarize relevant farm information.
-
-Example:
-
-> "How is my farm performing this season?"
-
----
-
-### 💰 Financial Analysis
-
-The assistant can analyze recorded farm expenses and income.
-
-Example:
-
-> "What are my biggest farming expenses?"
-
----
-
-### 📅 Personalized Recommendations
-
-The AI can suggest useful activities based on available farm information.
-
-Example:
-
-> "What should I focus on this week?"
-
----
-
-### Important AI Principle
-
-The AI assistant is designed as a **decision-support tool**.
-
-It should:
-
-* Explain recommendations clearly.
-* Avoid presenting uncertain information as fact.
-* Encourage professional agricultural assistance when appropriate.
-* Use available farmer data to improve relevance.
-* Avoid replacing qualified agricultural professionals.
-
----
-
-# 🔄 System Workflow
-
-The overall system can be represented as:
-
-```text
-                    Farmer
-                       │
-                       ▼
-                Create Account
-                       │
-                       ▼
-                 Create Farm
-                       │
-                       ▼
-                Add Field/Crop
-                       │
-                       ▼
-             Record Farm Activities
-                       │
-            ┌──────────┼──────────┐
-            ▼          ▼          ▼
-        Weather     Crop Health  Economics
-            │          │          │
-            └──────────┼──────────┘
-                       ▼
-                AgriWise Data
-                       │
-                       ▼
-             Personalized AI
-                       │
-                       ▼
-          Recommendations & Alerts
-```
-
----
-
-# 🛠️ Technology Stack
-
-## Frontend
-
-| Technology   | Purpose                          |
-| ------------ | -------------------------------- |
-| React.js     | User interface                   |
-| Vite         | Frontend development/build tool  |
-| JavaScript   | Application logic                |
-| React Router | Client-side routing              |
-| Axios        | API communication                |
-| CSS          | Styling and responsive interface |
-
----
-
-## Backend
-
-| Technology         | Purpose                    |
-| ------------------ | -------------------------- |
-| Node.js            | Runtime environment        |
-| Express.js         | REST API framework         |
-| Mongoose           | MongoDB object modeling    |
-| JWT                | Authentication             |
-| bcrypt             | Password hashing           |
-| Helmet             | HTTP security              |
-| CORS               | Cross-origin configuration |
-| express-rate-limit | API rate limiting          |
-
----
-
-## Database
-
-**MongoDB**
-
-MongoDB stores:
-
-* Users
-* Farms
-* Fields
-* Crops
-* Crop activities
-* Crop health records
-* Expenses
-* Income
-* Market prices
-* Notifications
-* AI conversation/context data
-
----
-
-## External Services
-
-Depending on implementation and availability, the system may integrate with:
-
-* 🌦️ Weather API
-* 🤖 AI API
-* 🗺️ Location/geographic services where necessary
-
-External API keys are stored securely in environment variables.
-
----
-
-# 🏗️ System Architecture
-
-AgriWise follows a layered MERN architecture.
-
-```text
-┌──────────────────────────────────────────────┐
-│                  FRONTEND                    │
-│                                              │
-│       React + Vite + React Router            │
-│                                              │
-└──────────────────────┬───────────────────────┘
-                       │
-                  REST API / JSON
-                       │
-┌──────────────────────▼───────────────────────┐
-│                  BACKEND                     │
-│                                              │
-│              Node.js + Express               │
-│                                              │
-│  Routes → Controllers → Services → Models    │
-│                                              │
-└───────────────┬───────────────┬──────────────┘
-                │               │
-                ▼               ▼
-        ┌──────────────┐   ┌──────────────┐
-        │   MongoDB    │   │ External APIs│
-        │              │   │              │
-        │ Farm Data    │   │ Weather      │
-        │ User Data    │   │ AI           │
-        │ Finance      │   │ Other APIs   │
-        └──────────────┘   └──────────────┘
-```
-
----
-
-# 📁 Project Structure
-
-```text
+``` text
 AgriWise-Ethiopia/
-│
 ├── Backend/
 │   ├── src/
-│   │   ├── config/
-│   │   │   └── database.js
-│   │   │
-│   │   ├── controllers/
-│   │   │
-│   │   ├── middleware/
-│   │   │
-│   │   ├── models/
-│   │   │
-│   │   ├── routes/
-│   │   │
-│   │   ├── services/
-│   │   │
-│   │   ├── utils/
-│   │   │
-│   │   └── server.js
-│   │
-│   ├── .env
-│   ├── .env.example
-│   ├── .gitignore
+│   ├── App.js
+│   ├── server.js
 │   └── package.json
-│
 ├── Frontend/
 │   ├── src/
-│   │   ├── assets/
+│   │   ├── app/
 │   │   ├── components/
 │   │   ├── context/
+│   │   ├── features/
 │   │   ├── hooks/
-│   │   ├── layouts/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   ├── utils/
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   │
-│   ├── .env.example
-│   ├── .gitignore
+│   │   ├── lib/
+│   │   └── styles/
 │   └── package.json
-│
-├── docs/
-│   ├── architecture.md
-│   ├── api.md
-│   └── database.md
-│
-├── .gitignore
-├── README.md
-└── package.json
+└── README.md
 ```
 
----
-
-# 🗄️ Database Overview
-
-The database will use MongoDB with Mongoose.
-
-The initial data model is organized around the following entities:
-
-```text
-User
- │
- ├── Farm
- │     │
- │     ├── Field
- │     │     └── Crop
- │     │
- │     └── CropActivity
- │
- ├── CropHealthRecord
- │
- ├── Expense
- │
- ├── Income
- │
- └── AIConversation
-```
-
-System-level information includes:
-
-```text
-MarketPrice
-Notification
-AgriculturalResource
-WeatherRecord
-```
-
-The exact schema will evolve during implementation as each feature is developed and tested.
-
----
-
-# 🔐 Authentication and Security
-
-AgriWise uses standard web security practices.
-
-### Authentication
-
-* User registration
-* User login
-* Password hashing
-* JWT-based authentication
-* Protected API routes
-* Role-based authorization
-
-### User roles
-
-```text
-FARMER
-ADMIN
-```
+This is a high-level overview. Refer to the actual folders and files in
+the current `dev` branch for the complete structure.
 
-### Security measures
+## API modules
 
-The backend will use:
+The backend exposes REST API functionality under the `/api` prefix.
+Implemented modules include:
 
-* Helmet
-* CORS configuration
-* Rate limiting
-* Environment variables
-* Password hashing
-* Input validation
-* Authentication middleware
-* Authorization middleware
-* Centralized error handling
+  -----------------------------------------------------------------------
+  Module                              Purpose
+  ----------------------------------- -----------------------------------
+  Authentication                      Registration, login, and
+                                      authenticated access
 
-Sensitive information such as database credentials, JWT secrets, and API keys will never be committed to GitHub.
+  Farms, fields, and crops            Manage agricultural records
 
----
+  Crop health                         Store and retrieve crop-health
+                                      records
 
-# 🔌 API Architecture
+  Crop risk                           Access crop-risk records and
+                                      functionality
 
-The backend follows a RESTful API architecture.
+  Weather                             Farm weather, forecasts, and
+                                      weather alerts
 
-Example API structure:
+  Economics and market prices         Agricultural economic and
+                                      reference-price information
 
-```text
-/api
-│
-├── /auth
-│   ├── POST /register
-│   ├── POST /login
-│   └── GET  /me
-│
-├── /farms
-├── /fields
-├── /crops
-├── /activities
-├── /crop-health
-├── /weather
-├── /notifications
-├── /expenses
-├── /income
-├── /market-prices
-├── /ai
-└── /admin
-```
+  Agricultural resources              Manage and access educational
+                                      resources
 
-The API will be documented using Swagger/OpenAPI during backend development.
+  Analytics                           Dashboard analytics and reports
 
----
+  AI assistant                        AI-powered agricultural assistance
+  -----------------------------------------------------------------------
 
-# 🎨 Frontend Structure
+Known route groups from the implementation include `/api/farm`,
+`/api/field`, `/api/crop`, `/api/crop-health`, and `/api/crop-risk`.
+Weather routes include farm-specific weather, forecast, and alert
+functionality. Check the current backend route files for the exact HTTP
+methods, parameters, and complete endpoint list; do not rely on this
+summary as a substitute for the route definitions.
 
-The frontend will provide separate experiences for farmers and administrators.
+## Security
 
-## Farmer Dashboard
+Security-related implementation includes:
 
-The farmer dashboard will provide access to:
+-   JWT-based authentication for protected requests.
+-   Password hashing.
+-   Role-based authorization for restricted functionality.
+-   CORS configuration for frontend/backend communication.
+-   Environment-based configuration for secrets and service credentials.
 
-```text
-Dashboard
-│
-├── My Farms
-├── Crops
-├── Activities
-├── Crop Health
-├── Weather
-├── Notifications
-├── Economics
-├── Market Prices
-└── AI Assistant
-```
+Keep real `.env` files, database credentials, JWT secrets, and external
+API keys out of Git. Only share placeholder values in documentation.
+Production security also depends on correct hosting configuration and
+secret management.
 
-## Administrator Dashboard
+## Deployment
 
-```text
-Admin Dashboard
-│
-├── Users
-├── Market Prices
-├── Agricultural Resources
-├── Notifications
-└── System Overview
-```
+The application has been deployed with the frontend and backend hosted
+separately. The frontend communicates with the deployed backend API, and
+the backend connects to the configured MongoDB database and external
+services.
 
-The interface will be responsive and designed primarily with mobile usability in mind.
+Deployment configuration is managed by the hosting platforms and
+repository branch settings. The current deployment branch is `dev`;
+pushing changes to that branch may trigger an automatic deployment
+depending on the configured build/deploy rules.
 
----
+For production deployment: 1. Configure the backend environment
+variables in the backend hosting service. 2. Configure the MongoDB
+connection string and external service credentials securely. 3. Set the
+frontend's API configuration to the deployed backend URL or use the
+configured API proxy approach. 4. Confirm the backend's CORS settings
+allow the deployed frontend origin. 5. Test registration/login and the
+main feature workflows after deployment.
 
-# 🌿 Design Principles
+Do not place production secrets or private connection strings in this
+README.
 
-AgriWise follows several design principles.
+## Run locally
 
-### Simplicity
+### Prerequisites
 
-The system should remain easy to understand and use.
+-   Node.js and npm
+-   Git
+-   A MongoDB database (local MongoDB or MongoDB Atlas)
+-   Required credentials for external services used by enabled features
 
-### Farmer-Centered Design
+Check your versions:
 
-Features should focus on real agricultural tasks rather than unnecessary technical complexity.
-
-### Personalization
-
-Information should become more useful as the system learns about the farmer's farm data.
-
-### Decision Support
-
-The system provides information and recommendations rather than attempting to replace agricultural professionals.
-
-### Modularity
-
-Each major feature is developed as an independent module so that the system can be expanded later.
-
-### Security
-
-User information and application secrets must be protected throughout development and deployment.
-
----
-
-# 🌍 Ethiopian Context
-
-AgriWise is designed with the Ethiopian agricultural context in mind.
-
-The platform can support agricultural information such as:
-
-* Local farming practices
-* Ethiopian crops
-* Regional weather conditions
-* Farm-level financial information
-* Local market/reference prices
-* Agricultural resources relevant to Ethiopian farmers
-
-The system is designed so that additional Ethiopian regions, crops, languages, and agricultural information can be incorporated in future versions.
-
----
-
-# 🔀 Git and Branching Strategy
-
-The project follows a professional Git workflow.
-
-## Main branches
-
-```text
-main
-dev
-```
-
-### Feature branches
-
-Feature development uses dedicated branches:
-
-```text
-feature/project-setup
-feature/authentication
-feature/farm-management
-feature/crop-management
-feature/weather
-feature/alerts
-feature/crop-health
-feature/economics
-feature/ai-assistant
-feature/admin
-```
-
-### Development workflow
-
-```text
-Feature Branch
-      │
-      ▼
-   Commit
-      │
-      ▼
-    Push
-      │
-      ▼
- Pull Request
-      │
-      ▼
-     dev
-      │
-      ▼
- Testing & Integration
-      │
-      ▼
-    main
-```
-
-This approach keeps the main branch stable and provides a clear development history.
-
----
-
-# ⚙️ Installation and Setup
-
-## Prerequisites
-
-Before running the project, install:
-
-* Node.js
-* npm
-* Git
-* MongoDB or MongoDB Atlas
-* A modern web browser
-
-Check Node.js and npm:
-
-```bash
+``` bash
 node --version
 npm --version
-```
-
-Check Git:
-
-```bash
 git --version
 ```
 
----
+### 1. Clone the repository
 
-# 📥 Clone the Repository
-
-```bash
+``` bash
 git clone https://github.com/dago-o/AgriWise-Ethiopia.git
-```
-
-Navigate into the project:
-
-```bash
 cd AgriWise-Ethiopia
 ```
 
----
+### 2. Configure and start the backend
 
-# 🔧 Backend Setup
+Open a terminal:
 
-Navigate to the backend:
-
-```bash
+``` bash
 cd Backend
-```
-
-Install dependencies:
-
-```bash
 npm install
 ```
 
-Create the environment file:
+Create a local `.env` file using the project's environment-variable
+example, if present, and provide the required values. Then start the
+backend using the script defined in `Backend/package.json` (the
+development script has been used as `npm run dev`).
 
-```text
-.env
-```
+The backend has been configured to use port `7000` by default in the
+development setup. Check the current backend configuration if your local
+settings differ.
 
-Copy the structure from:
+### 3. Configure and start the frontend
 
-```text
-.env.example
-```
+Open a second terminal from the repository root:
 
-Configure the required environment variables.
-
-Start the backend development server:
-
-```bash
-npm run dev
-```
-
-The backend will run on the configured port, for example:
-
-```text
-http://localhost:5000
-```
-
----
-
-# 💻 Frontend Setup
-
-Open another terminal and navigate to:
-
-```bash
-cd AgriWise-Ethiopia/Frontend
-```
-
-Install dependencies:
-
-```bash
+``` bash
+cd Frontend
 npm install
-```
-
-Create:
-
-```text
-.env
-```
-
-Configure the frontend environment variables.
-
-Start the development server:
-
-```bash
 npm run dev
 ```
 
-The Vite development server will normally be available at:
+Vite normally serves the development frontend at
+`http://localhost:5173`. Follow the API URL/proxy configuration in the
+current frontend source and environment examples so requests reach your
+local backend.
 
-```text
-http://localhost:5173
-```
+### 4. Verify the application
 
----
+-   Open the local frontend URL shown by Vite.
+-   Register or log in with a test account.
+-   Verify access to features appropriate for the test account's role.
+-   Check the browser console and backend terminal if a request fails.
 
-# 🔑 Environment Variables
+The exact npm scripts and required environment variables are defined in
+the current `package.json` files and environment examples.
 
-## Backend
+## Environment configuration
 
-Example:
+Environment-variable names can change with the implementation. Before
+running the project, check:
 
-```env
-PORT=5000
+-   `Backend/.env.example`, if present, for backend configuration.
+-   `Frontend/.env.example`, if present, for frontend configuration.
+-   The backend configuration files for database, JWT,
+    weather/geocoding, and Gemini settings.
+-   The frontend API client and Vite configuration for local proxy or
+    production API URL settings.
 
-MONGO_URI=your_mongodb_connection_string
+Typical values include a backend port, MongoDB connection string, JWT
+secret, and credentials for external services. Use the exact variable
+names expected by the code; do not copy placeholder names blindly. Never
+commit real secrets.
 
-JWT_SECRET=your_jwt_secret
+## Testing and verification
 
-WEATHER_API_KEY=your_weather_api_key
+The backend feature modules were developed and tested individually
+during implementation. Before a presentation or future release, verify
+the complete deployed workflows, especially:
 
-AI_API_KEY=your_ai_api_key
-```
+-   Authentication and role-based access.
+-   Farm, field, and crop management.
+-   Crop-health and crop-risk functionality.
+-   Weather and forecast requests.
+-   Market-price viewing and administrative management.
+-   Agricultural learning resources.
+-   Analytics and AI assistance.
 
-## Frontend
+External API responses can vary with network availability, credentials,
+location resolution, and service limits.
 
-Example:
+## Future improvements
 
-```env
-VITE_API_URL=http://localhost:5000/api
-```
+Potential future enhancements include:
 
-> **Never commit `.env` files containing real secrets to GitHub.**
+-   Broader Afaan Oromo and Amharic language support.
+-   More robust location resolution and regional agricultural data.
+-   Expanded offline/mobile usability.
+-   Additional crop monitoring and data visualization.
+-   Further evaluation and validation of AI-generated guidance.
+-   More comprehensive automated testing and monitoring.
 
----
+These are potential future enhancements, not claims that they are
+already implemented.
 
-# 🧪 Testing
+## Developer
 
-Testing will be introduced progressively during development.
+**Degefa Lemma**\
+BSc in Information Systems, Addis Ababa University
 
-The project will include testing for important areas such as:
+AgriWise-Ethiopia was developed as an individual graduation project in
+the INSA Summer Talent Camp.
 
-* Authentication
-* API endpoints
-* Validation
-* Database operations
-* Authorization
-* Core business logic
-* Frontend functionality
+## License
 
-Manual testing will also be performed across the main user workflows.
+This repository is an academic and portfolio project. No formal
+open-source license is specified here. Unless a license is added to the
+repository, reuse and redistribution are subject to applicable copyright
+law.
 
----
+------------------------------------------------------------------------
 
-# 📚 API Documentation
-
-The backend API will be documented using **Swagger/OpenAPI**.
-
-During development, API documentation will provide information about:
-
-* Endpoints
-* HTTP methods
-* Request parameters
-* Request bodies
-* Authentication requirements
-* Response formats
-* Error responses
-
-Example:
-
-```text
-Authentication
-     ↓
-POST /api/auth/login
-     ↓
-JWT Token
-     ↓
-Protected API Requests
-```
-
----
-
-# 🚀 Development Roadmap
-
-The project will be developed incrementally.
-
-### Phase 1 — Foundation
-
-* [x] Repository creation
-* [ ] Backend initialization
-* [ ] Frontend initialization
-* [ ] Environment configuration
-* [ ] MongoDB connection
-* [ ] Express server
-* [ ] Swagger setup
-
-### Phase 2 — Authentication
-
-* [ ] User registration
-* [ ] User login
-* [ ] JWT authentication
-* [ ] Password hashing
-* [ ] Role-based authorization
-* [ ] Farmer/Admin roles
-
-### Phase 3 — Farm Management
-
-* [ ] Farm creation
-* [ ] Field management
-* [ ] Crop management
-* [ ] Farming activities
-* [ ] Harvest records
-
-### Phase 4 — Weather & Alerts
-
-* [ ] Weather API integration
-* [ ] Forecast display
-* [ ] Weather alerts
-* [ ] Activity reminders
-* [ ] Notification system
-
-### Phase 5 — Crop Health
-
-* [ ] Crop health records
-* [ ] Symptom recording
-* [ ] Image upload
-* [ ] AI preliminary guidance
-* [ ] Professional-assistance recommendation
-
-### Phase 6 — Economics
-
-* [ ] Expense management
-* [ ] Income management
-* [ ] Profit calculation
-* [ ] Financial dashboard
-* [ ] Market/reference prices
-
-### Phase 7 — AI Assistant
-
-* [ ] AI API integration
-* [ ] Chat interface
-* [ ] Farm context
-* [ ] Crop context
-* [ ] Weather context
-* [ ] Financial context
-* [ ] Personalized recommendations
-
-### Phase 8 — Administration
-
-* [ ] Admin dashboard
-* [ ] User management
-* [ ] Market-price management
-* [ ] Agricultural resources
-* [ ] System monitoring
-
-### Phase 9 — Finalization
-
-* [ ] Validation
-* [ ] Security review
-* [ ] Error handling
-* [ ] Responsive design
-* [ ] Testing
-* [ ] Documentation
-* [ ] Deployment
-
----
-
-# 🔮 Future Improvements
-
-The initial version intentionally keeps the system manageable.
-
-Possible future versions could introduce:
-
-* 🌐 Multilingual support, including Afaan Oromo and Amharic
-* 📱 Progressive Web App/mobile application
-* 🗺️ Advanced geographic and farm mapping
-* 📡 IoT-based agricultural sensors
-* 🌱 Soil monitoring
-* 🛰️ Satellite-based crop monitoring
-* 📷 More advanced crop disease image analysis
-* 📈 Advanced agricultural analytics
-* 🛒 Agricultural marketplace
-* 🚜 Agricultural equipment management
-* 👨‍🌾 Agricultural expert network
-* 🔔 More advanced predictive alerts
-* 🧠 More sophisticated agricultural AI models
-
-These features are outside the initial MVP scope and can be considered after the core platform is completed.
-
----
-
-# 🎓 Academic and Practical Purpose
-
-AgriWise Ethiopia is designed as a practical software engineering project that demonstrates the application of modern technologies to an agricultural problem.
-
-The project demonstrates skills in:
-
-* Full-stack web development
-* REST API development
-* Database design
-* Authentication and authorization
-* React application development
-* Backend architecture
-* API integration
-* AI integration
-* Data management
-* Software security
-* Git/GitHub workflow
-* System documentation
-* Responsive web design
-
----
-
-# 📈 Project Goals
-
-The primary goal of AgriWise Ethiopia is to demonstrate how a modern web application can bring together:
-
-```text
-                 AGRICULTURAL DATA
-                        │
-          ┌─────────────┼─────────────┐
-          │             │             │
-        FARM          WEATHER       HEALTH
-        DATA           DATA          DATA
-          │             │             │
-          └─────────────┼─────────────┘
-                        │
-                     AI ENGINE
-                        │
-          ┌─────────────┼─────────────┐
-          │             │             │
-      GUIDANCE       ALERTS       ANALYTICS
-          │             │             │
-          └─────────────┼─────────────┘
-                        │
-                   FARMER DECISIONS
-```
-
-The project focuses on creating a **simple, practical, extensible, and professionally engineered agricultural platform** rather than attempting to solve every agricultural problem in a single application.
-
----
-
-# 👨‍💻 Developer
-
-**Degefa Lemma**
-
-BSc in Information Systems
-Addis Ababa University
-
-### Areas of Interest
-
-* MERN Stack Development
-* Full-Stack Web Development
-* Software Engineering
-* Artificial Intelligence Integration
-* Information Systems
-* Cybersecurity
-
----
-
-# 📄 License
-
-This project is currently developed as an academic and portfolio project.
-
-A formal open-source license may be added in a future release.
-
----
-
-## 🌱 AgriWise Ethiopia
-
-> **Smarter farming decisions through connected data, useful insights, and personalized digital assistance.**
+> 🌱 **AgriWise-Ethiopia --- Smarter farming decisions through connected
+> data, useful insights, and personalized digital assistance.**

@@ -1,0 +1,35 @@
+@theme {
+  --color-forest-950: #0a1f14;
+  --color-forest-900: #0f2e1e;
+  --color-forest-800: #16402a;
+  --color-forest-700: #1e5236;
+  --color-forest-600: #256845;
+  --color-forest-500: #2d8054;
+  --color-forest-400: #5aa07a;
+  --color-forest-300: #8fc2a4;
+  --color-forest-200: #bfdcca;
+  --color-forest-100: #dceee3;
+  --color-forest-50: #eef6f0;
+
+  --color-ivory-50: #faf8f4;
+  --color-ivory-100: #f3efe6;
+  --color-ivory-200: #e8e2d4;
+  --color-ivory-300: #d6cfbd;
+
+  --color-harvest-700: #6f5017;
+  --color-harvest-600: #8f6a1c;
+  --color-harvest-500: #c4922a;
+  --color-harvest-400: #d4a843;
+  --color-harvest-100: #f5e9cc;
+  --color-harvest-50: #fbf5e6;
+
+  --color-ink: #1a1f1c;
+  --color-ink-muted: #4a554f;
+  --color-ink-soft: #6b766f;
+
+  --font-sans: "Figtree Variable", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", "Segoe UI", system-ui, sans-serif;
+  --radius-card: 0.9rem;
+  --shadow-card: 0 1px 3px rgb(10 31 20 / 0.08), 0 4px 12px rgb(10 31 20 / 0.04);
+  --shadow-pop: 0 20px 60px -20px rgb(10 31 20 / 0.45);
+}

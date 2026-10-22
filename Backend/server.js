@@ -1,15 +1,11 @@
-import express from 'express';
-const app=express();
+import 'dotenv/config';
+import app from './App.js';
+import { connectDB } from './src/config/db.js';
 
-const PORT=7000;
+const PORT = process.env.PORT;
 
-app.get('/', (req, res)=>
-{
-    res.send("That is the first setup of the AgriWise-Ethiopia Backend.")
-})
+await connectDB();
 
-app.listen(PORT, ()=>{
-    console.log(`The server is running on the ${PORT}`);
-}
-
-);
+app.listen(PORT, () => {
+    console.log(`The server is running on: ${PORT}`);
+});

@@ -6,6 +6,9 @@ farm and crop management, crop-health and risk records, weather
 information, agricultural market prices, learning resources, analytics,
 and AI-powered agricultural assistance into one application.
 
+📽️ **Project Presentation Video:** [Watch the presentation](https://drive.google.com/file/d/1MA7VyzdwmhJRaD5P7MLRTIXWGyXFiprs/view?usp=sharing)
+
+📄 **Project Documentation:** [View the project documentation (PDF)](https://drive.google.com/file/d/1jp9Bj9eR3Koyr93pYIYg2BqrDOszg43b/view?usp=sharing)
 🟢 **[Live Demo](https://agriwise-ethiopia.pages.dev)**
 
 > 🟢 **Project Status:** Deployed web application  
